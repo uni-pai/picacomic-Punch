@@ -14,7 +14,6 @@ on:
   schedule:
     - cron: '2 2 * * *'
 
-
 jobs:
 
   build:    
@@ -33,13 +32,12 @@ jobs:
       with:
         dotnet-version: '5.0.x'
         
-    - name: build
+    - name: Build
       run: dotnet build -c Release
       
-    - name: run
-      env:
-        username: ${{secrets.USERNAME}}
-        password: ${{secrets.PASSWORD}}
-      run: dotnet run -- ${username} ${password}
+    - name: Run
+      env:        
+        accounts: ${{secrets.ACCOUNTS}}
+      run: dotnet run -- ${accounts}
      
         
